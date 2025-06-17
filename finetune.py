@@ -24,12 +24,17 @@ from transformers import LlamaForCausalLM, LlamaTokenizer
 
 from utils.prompter import Prompter
 
+# Configuration
+MODEL_PATH = "/storage2/fs1/dt-summer-corp/Active/common/users/c.daedalus/llamas/llama3.1-8b-sagemaker-pretrained"
+ALPACA_DATA_PATH = "/storage2/fs1/dt-summer-corp/Active/common/users/c.daedalus/instruction_tune/alpaca_data.json"
+OUTPUT_DIR = "/storage2/fs1/dt-summer-corp/Active/common/users/c.daedalus/llamas/llama3.18b-sagemaker-pretrained-alpaca-ft"
+MAX_LENGTH = 512
 
 def train(
     # model/data params
-    base_model: str = "",  # the only required argument
+    base_model: str = MODEL_PATH,  # the only required argument
     data_path: str = "yahma/alpaca-cleaned",
-    output_dir: str = "./lora-alpaca",
+    output_dir: str = OUTPUT_DIR,
     # training hyperparams
     batch_size: int = 128,
     micro_batch_size: int = 4,

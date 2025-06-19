@@ -1,5 +1,5 @@
 import os
-import sys
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"import sys
 from typing import List
 
 import fire
@@ -95,7 +95,7 @@ def train(
 
     prompter = Prompter(prompt_template_name)
 
-    device_map = "auto"
+    # device_map = "auto"
     world_size = int(os.environ.get("WORLD_SIZE", 1))
     ddp = world_size != 1
     if ddp:
